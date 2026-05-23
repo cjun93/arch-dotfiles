@@ -321,3 +321,14 @@ cd ~/dotfiles
 ---
 
 ## 📅 최종 업데이트: 2026-05-23
+
+### USB SSD 절전 방지 (TLP)
+
+USB SSD(ASMedia `174c:55aa`)가 유휴 시 잠드는 것을 방지:
+
+```bash
+echo 'USB_DENYLIST="174c:55aa"' | sudo tee -a /etc/tlp.conf
+sudo tlp start
+```
+
+> 부팅 디스크가 USB SSD이므로 autosuspend 시 디스크 접근 지연 발생. 해당 디바이스만 선택적 제외.
